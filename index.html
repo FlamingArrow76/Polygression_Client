@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!--Declares a source for Angular.js  DECLARE FIRST-->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+    <!--Declares a source for jQuery  DECLARE SECOND-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+    <script src="https://requirejs.org/docs/release/2.3.5/minified/require.js"></script>
+
+    <!--Declare various other scripts used-->
+    <script src="js/app.js" type="text/javascript"></script>
+    <!-- <script src="js/controller/CommController.js" type="text/javascript"></script> -->
+
+    <script src="js/controller/MainController.js" type="text/javascript"></script>
+    <!-- <script src="js/controller/CommController.js" type="text/javascript"></script> -->
+
+    <script src="js/script.js" type="text/javascript"></script>
+    <script src="js/directives/colist.js" type="text/javascript"></script>
+
+    <link href="/style.css" rel="stylesheet" type="text/css">
+    <link rel="shortcut icon" href="#">
+  </head>
+
+  <!-- Everything in body related to ToDoList app-->
+  <body ng-app="RegressionSite">   
+    <h1>PolyGression</h1>
+
+    <div ng-controller="MainController">
+        <p>For accurate formula of polynomial to Nth power, enter N+1 values </p>
+        <div style="width: 100%; display: table;">
+          <div style="display: table-row; position: relative;">
+            <div style="width: 35%; display: table-cell; top: 0;">
+                <div>
+                  <colist mylist="colist" ></colist>
+                  <label>X   </label>
+                  <input class="cordenter" id="x_input" ng-model="in_coord_x" >
+                  <label>  Y   </label>
+                  <input class="cordenter" id="y_input" ng-model="in_coord_y" >
+                  <button class="small_button" ng-click="addItem(colist.list, in_coord_x, in_coord_y)">Add Co-ordinate</button>               
+                </div>
+                
+                <div>
+                  <label>Maximum Power  </label>
+                  <input id="rangeinput" class="bar" type="range"  min="1" max="10" value="2"/>
+                  <label id="rangevalue"> </label>   
+                  <button class="increment" ng-click="increment_power()">+</button>
+                  <button class="decrement" ng-click="decrement_power()">-</button>   
+                  <button class="small_button" ng-click="sendData()">Calculate</button>
+                </div>              
+              
+              </div>
+
+
+            <div style="display: table-cell; position: absolute;">
+              <canvas id="myChart"> </canvas> 
+              <label id="Formula"></label>
+              <label id="Error"></label>
+            </div>
+          </div>
+        </div>
+        
+        
+    </div>
+    <!-- <div ng-controller = "CommController">
+        <button class="small_button" ng-click="sendData()">Send</button>
+    </div> -->
+
+
+  </body>
+</html>
